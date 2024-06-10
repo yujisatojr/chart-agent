@@ -20,3 +20,5 @@ yarn-error.log*
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb_checkpoints/
+
+/datasets

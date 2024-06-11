@@ -1,0 +1,223 @@
+.chatbot-interface {
+  border-radius: 10px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 1px 10px #00000026, 0 1px 1px #0000001a;
+  background-color: #eaeef2;
+}
+ 
+.messages-container {
+  padding: 20px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.message {
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.loading-message {
+  width: 20%;
+  padding: 5px 5px 5px 15px;
+  border-radius: 10px;
+}
+ 
+.user {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #1260cc;
+  color: #fff;
+}
+ 
+.bot {
+  background-color: #fff;
+}
+ 
+.input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+}
+ 
+.input-field {
+  flex-grow: 1;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+ 
+.send-button {
+  background-color: #000;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 25px;
+  cursor: pointer;
+  color: #fff;
+}
+ 
+.send-button:hover {
+  background-color: lighten(#000, 20%);
+}
+
+.send-button.disabled {
+  background-color: #8A8A8A;
+}
+
+.chat-reset-button {
+  margin-right: 10px;
+}
+
+.message-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .icon-container {
+    margin-right: 8px;
+  }
+
+  .icon {
+    font-size: 1.2em;
+  }
+
+  &.user {
+    width: 50%;
+    justify-content: flex-end;
+    .icon-container-user {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+  }
+}
+
+.bot-container {
+  width: 50%;
+
+  .message {
+    width: 100%;
+  }
+}
+
+.user-container {
+  width: 100%;
+  display: flex;
+
+  .user {
+    width: 50%;
+  }
+}
+
+.padding-snippet {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.chatbot-chart-style {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  height: 300px;
+  text-align: center;
+}
+
+.dot-elastic {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #000;
+  animation: dot-elastic 1s infinite linear;
+  margin-left: 40%;
+}
+
+.dot-elastic::before, .dot-elastic::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-elastic::before {
+  left: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #000;
+  animation: dot-elastic-before 1s infinite linear;
+}
+
+.dot-elastic::after {
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #000;
+  animation: dot-elastic-after 1s infinite linear;
+}
+
+@keyframes dot-elastic-before {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1.5);
+  }
+  50% {
+    transform: scale(1, 0.67);
+  }
+  75% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes dot-elastic {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 1.5);
+  }
+  75% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes dot-elastic-after {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 0.67);
+  }
+  75% {
+    transform: scale(1, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}

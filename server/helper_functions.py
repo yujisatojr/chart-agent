@@ -1,13 +1,20 @@
 from dotenv import load_dotenv, find_dotenv
+from groq import Groq
 import json
 from openai import OpenAI
 import os
 
 load_dotenv(find_dotenv())
 
-client = OpenAI(
-    api_key=os.getenv('OPENAI_API_KEY'),
+# client = OpenAI(
+#     api_key=os.getenv('OPENAI_API_KEY'),
+# )
+# llm_model =  'gpt-3.5-turbo-0125'
+
+client = Groq(
+    api_key=os.getenv('GROQ_API_KEY'),
 )
+llm_model = 'mixtral-8x7b-32768'
 
 def generate_chart(query):
     message_text = [
@@ -33,7 +40,7 @@ def generate_chart(query):
         }
     ]
     completion = client.chat.completions.create(
-        model="gpt-3.5-turbo-0125",
+        model=llm_model,
         messages=message_text,
         temperature=0.7,
         max_tokens=800,

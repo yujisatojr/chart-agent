@@ -29,12 +29,19 @@ async def index():
 async def custom_404_handler(request: Request, exc: HTTPException):
     return RedirectResponse('/')
 
+# Initialize the query history
+query_history = []
+
 @app.get("/generate_chart")
 async def get_chart(query: str = None):
+    global query_history
+
     if query is None:
         return JSONResponse(status_code=404, content={"error": "Please provide a query."})
 
-    result = generate_chart(query)
+    result = generate_chart(query, query_history)
+    
+    query_history.append(query)
 
     return JSONResponse(content=result, status_code=200)
 

@@ -1,28 +1,40 @@
-from flask import Flask, request, jsonify, send_from_directory, redirect
-from flask_cors import CORS
+from fastapi import FastAPI, Request, HTTPException, status
+from fastapi.responses import JSONResponse, FileResponse, RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 from helper_functions import generate_chart
+import os
 
-app = Flask(__name__, static_folder='../client/build', static_url_path='')
-CORS(app, supports_credentials=True)
+app = FastAPI()
 
-@app.route("/")
-def index():
-    return send_from_directory(app.static_folder, 'index.html')
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.errorhandler(404)
-def page_not_found(error):
-    print(error)
-    return redirect('/')
-    
-@app.route('/generate_chart', methods=['GET'])
-def get_chart():
-    query = request.args.get('query')
+@app.get("/")
+async def index():
+    static_file_path = os.path.join('../client/build', 'index.html')
+    if os.path.isfile(static_file_path):
+        return FileResponse(static_file_path)
+    else:
+        raise HTTPException(status_code=404, detail="File not found")
+
+@app.exception_handler(404)
+async def custom_404_handler(request: Request, exc: HTTPException):
+    return RedirectResponse('/')
+
+@app.get("/generate_chart")
+async def get_chart(query: str = None):
     if query is None:
-        return jsonify({"error": "Please provide a query."}), 404
+        return JSONResponse(status_code=404, content={"error": "Please provide a query."})
 
     result = generate_chart(query)
 
-    return jsonify(result), 200
+    return JSONResponse(content=result, status_code=200)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=5000, debug=True)

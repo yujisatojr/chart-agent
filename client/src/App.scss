@@ -4,6 +4,56 @@
   margin: auto;
   box-shadow: 0 1px 10px #00000026, 0 1px 1px #0000001a;
   background-color: #eaeef2;
+
+  .chatbot-header {
+    .flex-area {
+      padding: 15px;
+      display: flex;
+      gap: 15px;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 15px 15px 0px 0px;
+
+      .icon-container {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .online-indicator {
+        position: absolute;
+        bottom: 3px;
+        right: -3px;
+        width: 10px;
+        height: 10px;
+        background-color: #05b714;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+
+      svg {
+        font-size: 1.8em;
+        color: #fff;
+        background-color: #000;
+        border-radius: 50%;
+        padding: 10px;
+      }
+
+      .right-content {
+        h1 {
+          margin-block-start: 0px;
+          margin-block-end: 5px;
+          font-size: 1.2em;
+        }
+
+        p {
+          margin-block-start: 0px;
+          margin-block-end: 0px;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
 }
  
 .messages-container {
@@ -80,7 +130,7 @@
   margin-bottom: 10px;
 
   .icon-container {
-    margin-right: 8px;
+    margin-right: 10px;
   }
 
   .icon {
@@ -91,7 +141,7 @@
     width: 50%;
     justify-content: flex-end;
     .icon-container-user {
-      margin-left: 8px;
+      margin-left: 10px;
       margin-right: 0;
     }
   }

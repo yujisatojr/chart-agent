@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.scss';
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import PersonIcon from '@mui/icons-material/Person';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
@@ -31,7 +32,7 @@ function App() {
     setMessages([...messages, userMessage]);
 
     try {
-      const response = await fetch(`generate_chart?query=${query}`);
+      const response = await fetch(`http://localhost:5000/generate_chart?query=${query}`);
       const data = await response.json();
 
       const botMessage = { text: data.response, sender: 'bot', chart: {} };
@@ -58,6 +59,18 @@ function App() {
 
   return (
     <div className="chatbot-interface">
+      <div className='chatbot-header'>
+        <div className='flex-area'>
+          <div className="icon-container">
+            <AutoGraphIcon/>
+            <div className="online-indicator"></div>
+          </div>
+          <div className='right-content'>
+            <h1>AI Chart Agent</h1>
+            <p>The chart agent helps you generate a simple chart based on the topic of your choice.</p>
+          </div>
+        </div>
+      </div>
       <div className="messages-container" ref={messagesContainerRef}>
       {messages.map((message: any, index: number) => (
         <div key={index}>
@@ -109,7 +122,7 @@ function App() {
       <div className="input-area">
         <input
           type="text"
-          placeholder="Ask AI to create a chart"
+          placeholder="Please enter your topic and details for the chart"
           value={query}
           onChange={(e) => setQuestion(e.target.value)}
           className="input-field"

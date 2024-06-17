@@ -12,6 +12,33 @@ This chart agent app helps you generate a simple chart based on the topic of you
 
 To get started on your local machine, follow the steps below:
 
+### Setting Up Your OpenAI API Key
+
+1. Open a terminal and navigate to the `server` directory:
+
+   ```bash
+   cd server
+   ```
+
+2. Create a new file named `.env` to store your environment variables:
+
+   ```bash
+   touch .env
+   ```
+
+3. Open the `.env` file in a text editor of your choice, and add the following line, replacing `<your_api_key>` with your actual OpenAI API key:
+
+   ```dotenv
+   # .env file
+   OPENAI_API_KEY=<your_api_key>
+   ```
+
+4. Save the `.env` file and update your terminal session to include the new environment variables:
+
+   ```bash
+   source .env
+   ```
+
 ### Backend (FastAPI)
 
 1. Navigate to the project directory:

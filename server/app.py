@@ -32,13 +32,22 @@ async def custom_404_handler(request: Request, exc: HTTPException):
 # Initialize the query history
 query_history = []
 
+# Route to create a chart based on user text
 @app.get("/generate_chart")
 async def get_chart(query: str = None):
     global query_history
+    
+    # Check if the text provided by the user is not empty or if there is any non-whitespace text left after stripping
+    clean_query = query.rstrip()
+    if query is None or not clean_query.strip():
+        return JSONResponse(
+            status_code=200,
+            content={
+                "response": "It seems like you haven't provided any specific query related to a chart.",
+                "chartjs_code": ""
+        })
 
-    if query is None:
-        return JSONResponse(status_code=404, content={"error": "Please provide a query."})
-
+    # Pass the user query to the LLM for ChartJS code generation
     result = generate_chart(query, query_history)
     
     query_history.append(query)

@@ -13,22 +13,22 @@
       justify-content: flex-start;
       align-items: center;
       background-color: #fff;
-      border-radius: 15px 15px 0px 0px;
+      border-radius: 15px 15px 0 0;
 
       .icon-container {
         position: relative;
         display: inline-block;
-      }
-      
-      .online-indicator {
-        position: absolute;
-        bottom: 3px;
-        right: -3px;
-        width: 10px;
-        height: 10px;
-        background-color: #05b714;
-        border-radius: 50%;
-        border: 2px solid white;
+
+        .online-indicator {
+          position: absolute;
+          bottom: 3px;
+          right: -3px;
+          width: 10px;
+          height: 10px;
+          background-color: #05b714;
+          border-radius: 50%;
+          border: 2px solid white;
+        }
       }
 
       svg {
@@ -41,14 +41,14 @@
 
       .right-content {
         h1 {
-          margin-block-start: 0px;
+          margin-block-start: 0;
           margin-block-end: 5px;
           font-size: 1.2em;
         }
 
         p {
-          margin-block-start: 0px;
-          margin-block-end: 0px;
+          margin-block-start: 0;
+          margin-block-end: 0;
           font-size: 0.8em;
         }
       }
@@ -189,33 +189,29 @@
   color: #000;
   animation: dot-elastic 1s infinite linear;
   margin-left: 40%;
-}
 
-.dot-elastic::before, .dot-elastic::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 0;
-}
+  &::before,
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #000;
+  }
 
-.dot-elastic::before {
-  left: -15px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #000;
-  color: #000;
-  animation: dot-elastic-before 1s infinite linear;
-}
+  &::before {
+    left: -15px;
+    animation: dot-elastic-before 1s infinite linear;
+  }
 
-.dot-elastic::after {
-  left: 15px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #000;
-  color: #000;
-  animation: dot-elastic-after 1s infinite linear;
+  &::after {
+    left: 15px;
+    animation: dot-elastic-after 1s infinite linear;
+  }
 }
 
 @keyframes dot-elastic-before {

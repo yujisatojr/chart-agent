@@ -4,9 +4,7 @@
 
 This chart agent app helps you generate a simple chart based on the topic of your choice and online data.
 
-![Screenshot1](https://my-aws-assets.s3.us-west-2.amazonaws.com/chart-agent-1.png)
-
-![Screenshot2](https://my-aws-assets.s3.us-west-2.amazonaws.com/chart-agent-2.png)
+![Screenshot](https://my-aws-assets.s3.us-west-2.amazonaws.com/chart-agent.png)
 
 ## Getting Started
 
